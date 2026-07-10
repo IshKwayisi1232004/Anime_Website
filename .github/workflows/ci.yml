@@ -13,6 +13,12 @@ jobs:
   backend:
     runs-on: ubuntu-latest
 
+    env:
+      SPRING_PROFILES_ACTIVE: ci
+      DB_URL: ${{ secrets.DB_URL }}
+      DB_USERNAME: ${{ secrets.DB_USERNAME }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
     defaults:
       run:
         working-directory: backend
@@ -42,6 +48,13 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Verify Environment Variables
+        run: |
+          echo "SPRING_PROFILES_ACTIVE=$SPRING_PROFILES_ACTIVE"
+          if [ -n "$DB_URL" ]; then echo "DB_URL is set"; else echo "DB_URL is NOT set"; fi
+          if [ -n "$DB_USERNAME" ]; then echo "DB_USERNAME is set"; else echo "DB_USERNAME is NOT set"; fi
+          if [ -n "$DB_PASSWORD" ]; then echo "DB_PASSWORD is set"; else echo "DB_PASSWORD is NOT set"; fi
+
       - name: Make Maven Wrapper Executable
         run: chmod +x mvnw
 
@@ -53,11 +66,6 @@ jobs:
 
       - name: Package
         run: ./mvnw package
-        env:
-          SPRING_PROFILES_ACTIVE: ci
-          DB_URL: ${{ secrets.DB_URL }}
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
   frontend:
     runs-on: ubuntu-latest
