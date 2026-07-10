@@ -17,6 +17,21 @@ jobs:
       run:
         working-directory: backend
 
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: aniverse
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
     steps:
       - uses: actions/checkout@v4
 
@@ -30,8 +45,19 @@ jobs:
       - name: Make Maven Wrapper Executable
         run: chmod +x mvnw
 
-      - name: Build Backend
-        run: ./mvnw clean verify
+      - name: Compile
+        run: ./mvnw compile
+
+      - name: Run Tests
+        run: ./mvnw test
+
+      - name: Package
+        run: ./mvnw package
+        env:
+          SPRING_PROFILES_ACTIVE: ci
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
   frontend:
     runs-on: ubuntu-latest
