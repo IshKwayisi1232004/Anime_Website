@@ -1,3 +1,27 @@
+# Aniverse
+
+[Description placeholder]
+
+## Architecture
+```
+Frontend (Angular)
+        │
+        ▼
+Backend (Spring Boot)
+        │
+        ▼
+PostgreSQL Database (Docker)
+```
+
+## Stack
+* Frontend: Angular
+
+* Backend: Spring Boot
+
+* Database: PostgreSQL (Dockerized)
+
+* CI/CD Pipeline: GitHub Actions
+
 # Frontend
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.11.
