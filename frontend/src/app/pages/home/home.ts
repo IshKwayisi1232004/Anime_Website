@@ -3,10 +3,10 @@ import { Anime } from '../../models/anime';
 import { CommonModule } from '@angular/common';
 
 
-
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
