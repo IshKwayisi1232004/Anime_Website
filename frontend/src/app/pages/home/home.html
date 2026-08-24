@@ -52,36 +52,55 @@ style="background-image:url('assets/images/witch-hat-atelier.jpg')">
     <div class="absolute bottom-0 h-40 w-full bg-gradient-to-t from-zinc-950 to-transparent"></div>
 </section>
 
-<section class="mx-auto max-w-7xl px-10 py-20">
+<section class="mx-auto max-w-7xl px-8 py-14">
+
     <h2 class="mb-8 text-4xl font-bold text-white">
         Popular This Season
     </h2>
 
     <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-      
-        <div *ngFor="let anime of seasonalAnimes"
-        class="overflow-hidden rounded-2xl bg-zinc-900 transition hover:-translate-y-2 hover:scale-105">
-    
-            <img 
-            [src]="anime.image" 
-            [alt]="anime.title"
-            class="aspect-[2/3] w-full object-cover">
 
-            <div class="p-5">
-                <h3 class="mb-2 text-lg font-bold text-white">
-                    {{ anime.title }}
-                </h3>
+        <app-anime-card
+            *ngFor="let anime of seasonalAnimes"
+            [anime]="anime">
+        </app-anime-card>
 
-                <p class="text-yellow-400">
-                    ⭐ {{ anime.score }}
-                </p>
-                
-                <p class="mt-2 text-sm text-zinc-400">
-                    {{ anime.episodes }} Episodes
-                </p>
-            </div>
-        </div>
     </div>
+
+</section>
+
+<section class="mx-auto max-w-7xl px-8 py-14">
+
+    <h2 class="mb-8 text-4xl font-bold text-white">
+        Trending
+    </h2>
+
+    <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+
+        <app-anime-card
+            *ngFor="let anime of trendingAnimes"
+            [anime]="anime">
+        </app-anime-card>
+
+    </div>
+
+</section>
+
+<section class="mx-auto max-w-7xl px-8 py-14">
+
+    <h2 class="mb-8 text-4xl font-bold text-white">
+        Recently Added
+    </h2>
+
+    <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+
+        <app-anime-card
+            *ngFor="let anime of recentlyAddedAnimes"
+            [anime]="anime">
+        </app-anime-card>
+    
+    </div>
+    
 </section>
 
 <section class="bg-zinc-950 py-20">

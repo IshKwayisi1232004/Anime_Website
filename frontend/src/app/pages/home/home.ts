@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Anime } from '../../models/anime';
 import { CommonModule } from '@angular/common';
-
+import { AnimeCardComponent } from '../../shared/anime-card/anime-card';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AnimeCardComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
