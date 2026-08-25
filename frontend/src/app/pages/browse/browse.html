@@ -39,7 +39,8 @@
             <select
                 id="season"
                 [(ngModel)]="selectedSeason"
-                (change)="applyFilters()">
+                (change)="applyFilters()"
+                class="rounded-lg bg-zinc-900 border border-zinc-700 px-4 py-2 text-white">
 
                 <option value="All">All Seasons</option>
                 <option value="Winter">Winter</option>
@@ -57,7 +58,8 @@
             <select
                 id="status"
                 [(ngModel)]="selectedStatus"
-                (change)="applyFilters()">
+                (change)="applyFilters()"
+                class="rounded-lg bg-zinc-900 border border-zinc-700 px-4 py-2 text-white">
 
                 <option value="All">All Statuses</option>
                 <option value="Currently Airing">Currently Airing</option>
@@ -70,7 +72,8 @@
             <!-- Clear -->
             <button
             type="button"
-            (click)="clearFilters()">
+            (click)="clearFilters()"
+            class="rounded-lg bg-zinc-900 border border-zinc-700 px-4 py-2 text-white">
 
             Clear Filters
 
