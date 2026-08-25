@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Anime } from '../../models/anime';
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AnimeCardComponent } from '../../shared/anime-card/anime-card';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, AnimeCardComponent],
+  imports: [CommonModule, RouterLink, AnimeCardComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
@@ -74,7 +75,7 @@ export class HomeComponent implements OnInit {
         id: 6,
         title: 'Spy x Family',
         image: 'assets/images/spyfamily.jpg',
-        score: 8.9,
+        score: 9.9,
         episodes: 37,
         genres: ['Comedy', 'Action']
       },

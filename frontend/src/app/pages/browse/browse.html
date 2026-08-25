@@ -1,0 +1,102 @@
+<main class="min-h-screen bg-zinc-950 text-white">
+
+    <!-- Header -->
+    <section class="mx-auto max-w-7xl px-8 pt-14">
+
+        <h1 class="mb-3 text-5xl font-black">
+            Browse Anime
+        </h1>
+
+        <p class="mb-10 text-zinc-400">
+            Discover your next favorite series.
+        </p>
+
+        <!-- Search -->
+        <div class="mb-8">
+
+            <input
+                type="text"
+                [(ngModel)]="searchQuery"
+                placeholder="Search anime..."
+                class="w-full rounded-xl border border-zinc-700
+                       bg-zinc-900 px-5 py-4 text-white
+                       outline-none focus:border-violet-500"
+            >
+
+        </div>
+
+        <!-- Filters -->
+        <div class="mb-12 grid gap-4 md:grid-cols-3">
+
+            <select
+                [(ngModel)]="selectedGenre"
+                class="rounded-xl border border-zinc-700
+                       bg-zinc-900 px-4 py-3 text-white">
+
+                <option value="All">All Genres</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Romance">Romance</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+
+            </select>
+
+            <select
+                [(ngModel)]="selectedSeason"
+                class="rounded-xl border border-zinc-700
+                       bg-zinc-900 px-4 py-3 text-white">
+
+                <option value="All">All Seasons</option>
+                <option value="Winter">Winter</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
+                <option value="Fall">Fall</option>
+
+            </select>
+
+            <select
+                [(ngModel)]="selectedStatus"
+                class="rounded-xl border border-zinc-700
+                       bg-zinc-900 px-4 py-3 text-white">
+
+                <option value="All">All Statuses</option>
+                <option value="Currently Airing">Currently Airing</option>
+                <option value="Finished">Finished</option>
+                <option value="Upcoming">Upcoming</option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- Anime Grid -->
+    <section class="mx-auto max-w-7xl px-8 pb-20">
+
+        <div class="mb-8 flex items-center justify-between">
+
+            <h2 class="text-2xl font-bold">
+                Anime
+            </h2>
+
+            <p class="text-zinc-500">
+                {{ filteredAnimes.length }} results
+            </p>
+
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+
+            <app-anime-card
+                *ngFor="let anime of filteredAnimes"
+                [anime]="anime">
+            </app-anime-card>
+
+        </div>
+
+    </section>
+
+</main>
