@@ -1,6 +1,6 @@
 <main class="min-h-screen bg-zinc-950 text-white">
 
-    <!-- Header -->
+        <!-- Header -->
     <section class="mx-auto max-w-7xl px-8 pt-14">
 
         <h1 class="mb-3 text-5xl font-black">
@@ -17,6 +17,7 @@
             <input
                 type="text"
                 [(ngModel)]="searchQuery"
+                (input)="applyFilters()"
                 placeholder="Search anime..."
                 class="w-full rounded-xl border border-zinc-700
                        bg-zinc-900 px-5 py-4 text-white
@@ -25,28 +26,20 @@
 
         </div>
 
-        <!-- Filters -->
-        <div class="mb-12 grid gap-4 md:grid-cols-3">
+        <div class="filters">
+
+            <div class="search-container">
+            
+            </div>
+
+            <!-- Season -->
+            <div class="filter">
+            <label for="season">Season</label>
 
             <select
-                [(ngModel)]="selectedGenre"
-                class="rounded-xl border border-zinc-700
-                       bg-zinc-900 px-4 py-3 text-white">
-
-                <option value="All">All Genres</option>
-                <option value="Action">Action</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Fantasy">Fantasy</option>
-                <option value="Romance">Romance</option>
-                <option value="Sci-Fi">Sci-Fi</option>
-
-            </select>
-
-            <select
+                id="season"
                 [(ngModel)]="selectedSeason"
-                class="rounded-xl border border-zinc-700
-                       bg-zinc-900 px-4 py-3 text-white">
+                (change)="applyFilters()">
 
                 <option value="All">All Seasons</option>
                 <option value="Winter">Winter</option>
@@ -55,11 +48,16 @@
                 <option value="Fall">Fall</option>
 
             </select>
+            </div>
+
+            <!-- Status -->
+            <div class="filter">
+            <label for="status">Status</label>
 
             <select
+                id="status"
                 [(ngModel)]="selectedStatus"
-                class="rounded-xl border border-zinc-700
-                       bg-zinc-900 px-4 py-3 text-white">
+                (change)="applyFilters()">
 
                 <option value="All">All Statuses</option>
                 <option value="Currently Airing">Currently Airing</option>
@@ -67,10 +65,20 @@
                 <option value="Upcoming">Upcoming</option>
 
             </select>
+            </div>
+
+            <!-- Clear -->
+            <button
+            type="button"
+            (click)="clearFilters()">
+
+            Clear Filters
+
+            </button>
 
         </div>
 
-    </section>
+     </section>
 
 
     <!-- Anime Grid -->
@@ -83,7 +91,7 @@
             </h2>
 
             <p class="text-zinc-500">
-                {{ filteredAnimes.length }} results
+                {{ filteredAnimesData.length }} results
             </p>
 
         </div>
@@ -91,7 +99,7 @@
         <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
 
             <app-anime-card
-                *ngFor="let anime of filteredAnimes"
+                *ngFor="let anime of filteredAnimesData"
                 [anime]="anime">
             </app-anime-card>
 

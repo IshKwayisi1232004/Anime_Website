@@ -31,7 +31,9 @@ export class HomeComponent implements OnInit {
             image: 'assets/images/frieren.jpg',
             score: 9.3,
             episodes: 28,
-            genres: ['Adventure', 'Fantasy']
+            genres: ['Adventure', 'Fantasy'],
+            season: 'Spring',
+            status: 'Finished'
         },
         {
             id: 2,
@@ -39,7 +41,9 @@ export class HomeComponent implements OnInit {
             image: 'assets/images/dandadan.jpg',
             score: 8.8,
             episodes: 12,
-            genres: ['Comedy', 'Supernatural']
+            genres: ['Comedy', 'Supernatural'],
+            season: 'Winter',
+            status: 'Finished'
         },
         {
             id: 3,
@@ -47,46 +51,56 @@ export class HomeComponent implements OnInit {
             image: 'assets/images/polar_opposites.jpg',
             score: 9.3,
             episodes: 13,
-            genres: ['Romance', 'Comedy']
+            genres: ['Romance', 'Comedy'],
+            season: 'Spring',
+            status: 'Finished'
         }
     ];
 
     this.seasonalAnimes = [
       {
-        id: 4,
-        title: 'Kaiju No. 8',
-        image: 'assets/images/kaiju8.jpg',
-        score: 8.7,
-        episodes: 12,
-        genres: ['Action', 'Sci-Fi']
-      },
-      {
-        id: 5,
-        title: 'Ghost In The Shell',
-        image: 'assets/images/ghostintheshell.jpg',
-        score: 9.6,
-        episodes: 1,
-        genres: ['Action', 'Sci-Fi']
-      }
+          id: 4,
+          title: 'Kaiju No. 8',
+          image: 'assets/images/kaiju8.jpg',
+          score: 8.7,
+          episodes: 12,
+          genres: ['Action', 'Sci-Fi'],
+          season: 'Fall',
+          status: 'Finished'
+        },
+        {
+          id: 5,
+          title: 'Ghost In The Shell',
+          image: 'assets/images/ghostintheshell.jpg',
+          score: 9.1,
+          episodes: 1,
+          genres: ['Action', 'Sci-Fi'],
+          season: 'Summer',
+          status: 'Finished'
+        }
     ];
 
     this.recentlyAddedAnimes = [
       {
-        id: 6,
-        title: 'Spy x Family',
-        image: 'assets/images/spyfamily.jpg',
-        score: 9.9,
-        episodes: 37,
-        genres: ['Comedy', 'Action']
-      },
-      {
-        id: 7,
-        title: 'Smoking Behind the Supermarket with You',
-        image: 'assets/images/smoking_behind_supermarket.jpg',
-        score: 9.1,
-        episodes: 12,
-        genres: ['Romance', 'Slice of Life']
-      }
+          id: 6,
+          title: 'Spy x Family',
+          image: 'assets/images/spyfamily.jpg',
+          score: 9.9,
+          episodes: 37,
+          genres: ['Comedy', 'Action'],
+          season: 'Fall',
+          status: 'Finished'
+        },
+        {
+          id: 7,
+          title: 'Smoking Behind the Supermarket with You',
+          image: 'assets/images/smoking_behind_supermarket.jpg',
+          score: 9.6,
+          episodes: 12,
+          genres: ['Romance', 'Slice of Life'],
+          season: 'Spring',
+          status: 'Finished'
+        }
     ];
   }
 }

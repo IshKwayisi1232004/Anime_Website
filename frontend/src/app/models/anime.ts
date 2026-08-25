@@ -5,4 +5,6 @@ export interface Anime {
   score: number;
   episodes: number;
   genres: string[];
+  season: string;
+  status: string;
 }
