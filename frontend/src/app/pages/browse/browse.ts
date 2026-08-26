@@ -14,13 +14,14 @@ import { AnimeCardComponent } from '../../shared/anime-card/anime-card';
 })
 export class Browse {
   
+  // Search query
   searchQuery: string = '';
 
   // Current filters
   selectedGenre: string = 'All';
   selectedSeason: string = 'All';
   selectedStatus: string = 'All';
-
+  selectedSort: string = 'default';
 
   // Mock Anime dataset
   animes: Anime[] = [];
@@ -130,12 +131,67 @@ export class Browse {
         return matchesSearch && matchesSeason && matchesStatus;
       });
 
+      this.sortAnime();
+
     }
 
     clearFilters(): void {
+      this.searchQuery = '';
       this.selectedSeason = 'All';
       this.selectedStatus = 'All';
+      this.selectedSort = 'default';
 
       this.filteredAnimesData = [...this.animes];
+  }
+
+  sortAnime(): void {
+
+    switch (this.selectedSort){
+      case 'score-desc':
+        this.filteredAnimesData.sort(
+          (a, b) => b.score - a.score
+        );
+
+        break;
+
+      case 'score-asc': 
+        this.filteredAnimesData.sort(
+          (a, b) => a.score - b.score
+        );
+
+        break;
+      
+      case 'title-asc':
+        this.filteredAnimesData.sort(
+          (a, b) => a.title.localeCompare(b.title)
+        )
+
+        break; 
+
+      case 'title-desc':
+        this.filteredAnimesData.sort(
+          (a, b) => b.title.localeCompare(a.title)
+        );
+
+        break;
+
+      case 'episodes-desc':
+        this.filteredAnimesData.sort(
+          (a, b) => b.episodes - a.episodes
+        )
+
+        break; 
+
+      case 'episdoes-asc':
+        this.filteredAnimesData.sort(
+          (a, b) => a.episodes - b.episodes
+        );
+
+        break;
+
+      case 'default':
+        default:
+          break;
+    }
   }
 }

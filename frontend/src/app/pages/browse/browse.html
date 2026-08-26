@@ -32,50 +32,71 @@
             
             </div>
 
+            <!-- Sort -->
+             <div class="filter">
+                <label for="sort">Sort By</label>
+
+                <select 
+                    id="sort"
+                    [(ngModel)]="selectedSort"
+                    (change)="applyFilters()"
+                    class="rounded-lg bg-zinc-900 border border-zinc-700 px-4 py-2 text-white">
+
+                    <option value="default">Default</option>
+                    <option value="score-desc">Highest Score</option>
+                    <option value="score-asc">Lowest Score</option>
+                    <option value="title-desc">Title: A-Z</option>
+                    <option value="title-asc">Title: Z-A</option>
+                    <option value="episodes-desc">Most Episodes</option>
+                    <option value="episodes-asc">Fewest Episodes</option>
+                
+                </select>
+             </div>
+
             <!-- Season -->
             <div class="filter">
-            <label for="season">Season</label>
+                <label for="season">Season</label>
 
-            <select
-                id="season"
-                [(ngModel)]="selectedSeason"
-                (change)="applyFilters()"
-                class="rounded-lg bg-zinc-900 border border-zinc-700 px-4 py-2 text-white">
+                <select
+                    id="season"
+                    [(ngModel)]="selectedSeason"
+                    (change)="applyFilters()"
+                    class="rounded-lg bg-zinc-900 border border-zinc-700 px-4 py-2 text-white">
 
-                <option value="All">All Seasons</option>
-                <option value="Winter">Winter</option>
-                <option value="Spring">Spring</option>
-                <option value="Summer">Summer</option>
-                <option value="Fall">Fall</option>
+                    <option value="All">All Seasons</option>
+                    <option value="Winter">Winter</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Fall">Fall</option>
 
-            </select>
+                </select>
             </div>
 
             <!-- Status -->
             <div class="filter">
-            <label for="status">Status</label>
+                <label for="status">Status</label>
 
-            <select
-                id="status"
-                [(ngModel)]="selectedStatus"
-                (change)="applyFilters()"
-                class="rounded-lg bg-zinc-900 border border-zinc-700 px-4 py-2 text-white">
+                <select
+                    id="status"
+                    [(ngModel)]="selectedStatus"
+                    (change)="applyFilters()"
+                    class="rounded-lg bg-zinc-900 border border-zinc-700 px-4 py-2 text-white">
 
-                <option value="All">All Statuses</option>
-                <option value="Currently Airing">Currently Airing</option>
-                <option value="Finished">Finished</option>
-                <option value="Upcoming">Upcoming</option>
+                    <option value="All">All Statuses</option>
+                    <option value="Currently Airing">Currently Airing</option>
+                    <option value="Finished">Finished</option>
+                    <option value="Upcoming">Upcoming</option>
 
-            </select>
+                </select>
             </div>
 
             <!-- Clear -->
             <button
-            type="button"
-            (click)="clearFilters()"
-            class="rounded-lg bg-zinc-900 border border-zinc-700 px-4 py-2 text-white">
+                type="button"
+                (click)="clearFilters()"
+                class="rounded-lg bg-zinc-900 border border-zinc-700 px-4 py-2 text-white">
 
-            Clear Filters
+                Clear Filters
 
             </button>
 
