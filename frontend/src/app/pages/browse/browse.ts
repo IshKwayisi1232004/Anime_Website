@@ -23,125 +23,135 @@ export class Browse {
   selectedStatus: string = 'All';
   selectedSort: string = 'default';
 
+  // Pagination rules
+  currentPage: number = 1;
+  itemsPerPage: number = 5;  
+
+
   // Mock Anime dataset
   animes: Anime[] = [];
 
-    // Filtered anime dataset
-    filteredAnimesData: Anime[] = [];
+  // Filtered anime dataset
+  filteredAnimesData: Anime[] = [];
 
-    ngOnInit(): void{
-      this.loadMockData();
+  ngOnInit(): void{
+    this.loadMockData();
 
-      // Initially display everything
-      this.filteredAnimesData = [...this.animes];
-    }
+    // Initially display everything
+    this.filteredAnimesData = [...this.animes];
+  }
 
-    private loadMockData(): void {
-      this.animes = [
-        {
-            id: 1,
-            title: 'Frieren: Beyond Journey\'s End',
-            image: 'assets/images/frieren.jpg',
-            score: 9.3,
-            episodes: 28,
-            genres: ['Adventure', 'Fantasy'],
-            season: 'Spring',
-            status: 'Finished'
-        },
-        {
-            id: 2,
-            title: 'Dandadan',
-            image: 'assets/images/dandadan.jpg',
-            score: 8.8,
-            episodes: 12,
-            genres: ['Comedy', 'Supernatural'],
-            season: 'Winter',
-            status: 'Finished'
-        },
-        {
-            id: 3,
-            title: 'You and I Are Polar Opposites',
-            image: 'assets/images/polar_opposites.jpg',
-            score: 9.3,
-            episodes: 13,
-            genres: ['Romance', 'Comedy'],
-            season: 'Spring',
-            status: 'Finished'
-        },
-        {
-          id: 4,
-          title: 'Kaiju No. 8',
-          image: 'assets/images/kaiju8.jpg',
-          score: 8.7,
-          episodes: 12,
-          genres: ['Action', 'Sci-Fi'],
-          season: 'Fall',
-          status: 'Finished'
-        },
-        {
-          id: 5,
-          title: 'Ghost In The Shell',
-          image: 'assets/images/ghostintheshell.jpg',
-          score: 9.1,
-          episodes: 1,
-          genres: ['Action', 'Sci-Fi'],
-          season: 'Summer',
-          status: 'Finished'
-        },
-        {
-          id: 6,
-          title: 'Spy x Family',
-          image: 'assets/images/spyfamily.jpg',
-          score: 9.9,
-          episodes: 37,
-          genres: ['Comedy', 'Action'],
-          season: 'Fall',
-          status: 'Finished'
-        },
-        {
-          id: 7,
-          title: 'Smoking Behind the Supermarket with You',
-          image: 'assets/images/smoking_behind_supermarket.jpg',
-          score: 9.6,
-          episodes: 12,
-          genres: ['Romance', 'Slice of Life'],
+  private loadMockData(): void {
+    this.animes = [
+      {
+          id: 1,
+          title: 'Frieren: Beyond Journey\'s End',
+          image: 'assets/images/frieren.jpg',
+          score: 9.3,
+          episodes: 28,
+          genres: ['Adventure', 'Fantasy'],
           season: 'Spring',
           status: 'Finished'
-        }
-      ]
-    }
+      },
+      {
+          id: 2,
+          title: 'Dandadan',
+          image: 'assets/images/dandadan.jpg',
+          score: 8.8,
+          episodes: 12,
+          genres: ['Comedy', 'Supernatural'],
+          season: 'Winter',
+          status: 'Finished'
+      },
+      {
+          id: 3,
+          title: 'You and I Are Polar Opposites',
+          image: 'assets/images/polar_opposites.jpg',
+          score: 9.3,
+          episodes: 13,
+          genres: ['Romance', 'Comedy'],
+          season: 'Spring',
+          status: 'Finished'
+      },
+      {
+        id: 4,
+        title: 'Kaiju No. 8',
+        image: 'assets/images/kaiju8.jpg',
+        score: 8.7,
+        episodes: 12,
+        genres: ['Action', 'Sci-Fi'],
+        season: 'Fall',
+        status: 'Finished'
+      },
+      {
+        id: 5,
+        title: 'Ghost In The Shell',
+        image: 'assets/images/ghostintheshell.jpg',
+        score: 9.1,
+        episodes: 1,
+        genres: ['Action', 'Sci-Fi'],
+        season: 'Summer',
+        status: 'Finished'
+      },
+      {
+        id: 6,
+        title: 'Spy x Family',
+        image: 'assets/images/spyfamily.jpg',
+        score: 9.9,
+        episodes: 37,
+        genres: ['Comedy', 'Action'],
+        season: 'Fall',
+        status: 'Finished'
+      },
+      {
+        id: 7,
+        title: 'Smoking Behind the Supermarket with You',
+        image: 'assets/images/smoking_behind_supermarket.jpg',
+        score: 9.6,
+        episodes: 12,
+        genres: ['Romance', 'Slice of Life'],
+        season: 'Spring',
+        status: 'Finished'
+      }
+    ]
+  }
 
-    applyFilters(): void {
+  applyFilters(): void {
 
-      const query = this.searchQuery.trim().toLowerCase(); 
+    const query = this.searchQuery.trim().toLowerCase(); 
 
-      this.filteredAnimesData = this.animes.filter(anime => {
+    this.filteredAnimesData = this.animes.filter(anime => {
 
-        const matchesSearch =
-          anime.title.toLowerCase().includes(query);
+      const matchesSearch =
+        anime.title.toLowerCase().includes(query);
 
-        const matchesSeason =
-          this.selectedSeason === 'All' ||
-          anime.season === this.selectedSeason;
+      const matchesSeason =
+        this.selectedSeason === 'All' ||
+        anime.season === this.selectedSeason;
 
-        const matchesStatus =
-          this.selectedStatus === 'All' ||
-          anime.status === this.selectedStatus;
+      const matchesStatus =
+        this.selectedStatus === 'All' ||
+        anime.status === this.selectedStatus;
 
-        return matchesSearch && matchesSeason && matchesStatus;
-      });
+      return matchesSearch && matchesSeason && matchesStatus;
+    });
 
-      this.sortAnime();
+    this.sortAnime();
 
-    }
+    // After pagination reset the page and number
+    this.currentPage = 1;
 
-    clearFilters(): void {
-      this.searchQuery = '';
-      this.selectedSeason = 'All';
-      this.selectedStatus = 'All';
-      this.selectedSort = 'default';
+  }
 
-      this.filteredAnimesData = [...this.animes];
+  clearFilters(): void {
+    this.searchQuery = '';
+    this.selectedSeason = 'All';
+    this.selectedStatus = 'All';
+    this.selectedSort = 'default';
+
+    this.filteredAnimesData = [...this.animes];
+
+    this.currentPage = 1; 
   }
 
   sortAnime(): void {
@@ -194,4 +204,35 @@ export class Browse {
           break;
     }
   }
+
+  get paginatedAnimes(): Anime[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+
+    return this.filteredAnimesData.slice(startIndex, endIndex);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(
+      this.filteredAnimesData.length / this.itemsPerPage
+    );
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages){
+      this.currentPage++;
+    }  
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1){
+      this.currentPage--;
+    }  
+  }
+
+  goToPage(page:number): void{
+    if(page >= 1 && page <= this.totalPages){
+      this.currentPage = page;
+    }
+  } 
 }

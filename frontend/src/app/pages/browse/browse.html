@@ -123,12 +123,60 @@
         <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
 
             <app-anime-card
-                *ngFor="let anime of filteredAnimesData"
+                *ngFor="let anime of paginatedAnimes"
                 [anime]="anime">
             </app-anime-card>
 
         </div>
 
     </section>
+
+    <div class="mt-12 flex items-center justify-center gap-2" *ngIf="totalPages > 1">
+
+        <!-- Previous -->
+        <button
+            type="button"
+            (click)="previousPage()"
+            [disabled]="currentPage === 1"
+            class="rounded-lg border border-zinc-700 bg-zinc-900
+                px-4 py-2 text-white
+                disabled:cursor-not-allowed
+                disabled:opacity-40">
+
+            Previous
+
+        </button>
+
+
+        <!-- Page Numbers -->
+        <button
+            *ngFor="let page of [].constructor(totalPages); let i = index"
+            type="button"
+            (click)="goToPage(i + 1)"
+            class="rounded-lg border border-zinc-700 px-4 py-2"
+            [class.bg-violet-600]="currentPage === i + 1"
+            [class.bg-zinc-900]="currentPage !== i + 1"
+            [class.text-white]="true">
+
+            {{ i + 1 }}
+
+        </button>
+
+
+        <!-- Next -->
+        <button
+            type="button"
+            (click)="nextPage()"
+            [disabled]="currentPage === totalPages"
+            class="rounded-lg border border-zinc-700 bg-zinc-900
+                px-4 py-2 text-white
+                disabled:cursor-not-allowed
+                disabled:opacity-40">
+
+            Next
+
+        </button>
+
+    </div>
 
 </main>
