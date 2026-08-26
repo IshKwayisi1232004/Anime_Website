@@ -3,11 +3,12 @@ import { Anime } from '../../models/anime';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AnimeCardComponent } from '../../shared/anime-card/anime-card';
+import { Navbar } from '../../shared/navbar/navbar';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, AnimeCardComponent],
+  imports: [CommonModule, RouterLink, AnimeCardComponent, Navbar],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })

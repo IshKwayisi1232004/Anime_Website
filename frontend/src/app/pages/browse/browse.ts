@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Anime } from '../../models/anime';
 import { AnimeCardComponent } from '../../shared/anime-card/anime-card';
+import { Navbar } from '../../shared/navbar/navbar';
 
 
 @Component({
   selector: 'app-browse',
   standalone: true,
-  imports: [CommonModule, FormsModule, AnimeCardComponent],
+  imports: [CommonModule, FormsModule, AnimeCardComponent, Navbar],
   templateUrl: './browse.html',
   styleUrl: './browse.scss',
 })
