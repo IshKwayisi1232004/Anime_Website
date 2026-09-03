@@ -10,6 +10,9 @@ public class Anime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique=true)
+    private Long malId;
+
     @Column(nullable=false)
     private String title;
 
@@ -20,7 +23,7 @@ public class Anime {
 
     private String status;
 
-    private String rating; 
+    private Double rating; 
 
     private Integer episodes;
 
@@ -28,7 +31,7 @@ public class Anime {
 
     }
 
-    public Anime(String title, String description, String imageUrl, String status, String rating, Integer episodes) {
+    public Anime(String title, String description, String imageUrl, String status, Double rating, Integer episodes) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
@@ -57,12 +60,16 @@ public class Anime {
         return status;
     }
 
-    public String getRating() {
+    public Double getRating() {
         return rating;
     }
 
     public Integer getEpisodes() {
         return episodes;
+    }
+
+    public Long getMalId() {
+        return malId;
     }
 
     public void setId(Long id) {
@@ -85,11 +92,15 @@ public class Anime {
         this.status = status;
     }
     
-    public void setRating(String rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
     public void setEpisodes(Integer episodes) {
         this.episodes = episodes;
+    }
+
+    public void setMalId(Long malId) {
+        this.malId = malId;
     }
 }
