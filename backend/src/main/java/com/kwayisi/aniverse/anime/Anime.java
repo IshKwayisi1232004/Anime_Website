@@ -17,27 +17,36 @@ public class Anime {
     private String title;
 
     @Column(columnDefinition = "TEXT")
-    private String description;
+    private String synopsis;
 
     private String imageUrl;
 
+    private String type;
+
     private String status;
 
-    private Double rating; 
+    private Double score; 
 
     private Integer episodes;
+
+    private String season;
+
+    private Integer year;
 
     public Anime(){
 
     }
 
-    public Anime(String title, String description, String imageUrl, String status, Double rating, Integer episodes) {
+    public Anime(String title, String synopsis, String imageUrl, String type, String status, Double score, Integer episodes, String season, Integer year) {
         this.title = title;
-        this.description = description;
+        this.synopsis = synopsis;
         this.imageUrl = imageUrl;
+        this.type = type;
         this.status = status;
-        this.rating = rating;
+        this.score = score;
         this.episodes = episodes;
+        this.season = season;
+        this.year = year;
     }
 
     public Long getId() {
@@ -48,8 +57,12 @@ public class Anime {
         return title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSynopsis() {
+        return synopsis;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public String getImageUrl() {
@@ -60,8 +73,8 @@ public class Anime {
         return status;
     }
 
-    public Double getRating() {
-        return rating;
+    public Double getScore() {
+        return score;
     }
 
     public Integer getEpisodes() {
@@ -72,6 +85,14 @@ public class Anime {
         return malId;
     }
 
+    public String getSeason() {
+        return season;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -80,8 +101,12 @@ public class Anime {
         this.title = title;
     } 
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
     
     public void setImageUrl(String imageUrl) {
@@ -92,8 +117,16 @@ public class Anime {
         this.status = status;
     }
     
-    public void setRating(Double rating) {
-        this.rating = rating;
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public void setEpisodes(Integer episodes) {

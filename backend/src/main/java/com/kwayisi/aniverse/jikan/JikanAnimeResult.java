@@ -8,6 +8,10 @@ public class JikanAnimeResult {
     private String status;
     private Integer episodes;
     private Double score;
+    private String type;
+    private String season;
+    private Integer year;
+    private JikanImages images;
 
     public Long getMal_id() {
         return mal_id;
@@ -55,5 +59,37 @@ public class JikanAnimeResult {
 
     public void setScore(Double score) {
         this.score = score;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public JikanImages getImages() {
+        return images;
+    }
+
+    public void setImages(JikanImages images) {
+        this.images = images;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type){
+        this.type = type;
     }
 }

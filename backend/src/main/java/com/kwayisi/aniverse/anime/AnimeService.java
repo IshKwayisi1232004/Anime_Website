@@ -51,11 +51,26 @@ public class AnimeService {
 
         anime.setMalId(jikanAnime.getMal_id());
         anime.setTitle(jikanAnime.getTitle());
-        anime.setDescription(jikanAnime.getSynopsis());
+        anime.setSynopsis(jikanAnime.getSynopsis());
+        
         anime.setStatus(jikanAnime.getStatus());
         anime.setEpisodes(jikanAnime.getEpisodes());
-        anime.setRating(jikanAnime.getScore());
+        anime.setScore(jikanAnime.getScore());
+        anime.setYear(jikanAnime.getYear());
+        
+        anime.setType(jikanAnime.getType());
+        anime.setSeason(jikanAnime.getSeason());
+        
+        if(jikanAnime.getImages() != null && 
+            jikanAnime.getImages().getJpg() != null){
 
+            anime.setImageUrl(
+                jikanAnime.getImages()
+                .getJpg()
+                .getLarge_image_url()
+            );
+    }
+        
         // Save to PostgreSQL database
         return animeRepository.save(anime);
     }
