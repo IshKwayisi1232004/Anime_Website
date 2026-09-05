@@ -3,7 +3,10 @@ package com.kwayisi.aniverse.anime;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import com.kwayisi.aniverse.jikan.JikanCompany;
 
 @Entity
 @Table(name="anime")
@@ -44,10 +47,6 @@ public class Anime {
 
     private Integer favorites;
 
-    private String studios;
-
-    private String producers;
-
     private String season;
 
     private String source;
@@ -58,7 +57,7 @@ public class Anime {
 
     }
 
-    public Anime(String title, String synopsis, String imageUrl, String type, String status, Double score, Integer episodes, Integer rank, Integer popularity, Integer members, Integer favorites, String studios, String producers, String season, String source, Integer year) {
+    public Anime(String title, String synopsis, String imageUrl, String type, String status, Double score, Integer episodes, Integer rank, Integer popularity, Integer members, Integer favorites, String season, String source, Integer year) {
         this.title = title;
         this.synopsis = synopsis;
         this.imageUrl = imageUrl;
@@ -70,8 +69,6 @@ public class Anime {
         this.popularity = popularity;
         this.members = members;
         this.favorites = favorites;
-        this.studios = studios;
-        this.producers = producers;
         this.season = season;
         this.source = source;
         this.year = year;
@@ -153,16 +150,12 @@ public class Anime {
         return favorites;
     }
 
-    public String getStudios() {
-        return studios;
-    }
-
-    public String getProducers() {
-        return producers;
-    }
-
     public String getSource() {
         return source;
+    }
+
+    public Set<Genre> getGenres() {
+        return genres;
     }
 
     public void setId(Long id) {
@@ -217,20 +210,12 @@ public class Anime {
         this.favorites = favorites;
     }
 
-    public void setStudios(String studios) {
-        this.studios = studios;
-    }
-
-    public void setProducers(String producers) {
-        this.producers = producers;
-    }
-
     public void setSource(String source) {
         this.source = source;
     }
 
-    public void setSeason(String season) {
-        this.season = season;
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
     }
 
     public void setYear(Integer year) {
@@ -239,6 +224,10 @@ public class Anime {
 
     public void setEpisodes(Integer episodes) {
         this.episodes = episodes;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
     }
 
     public void setMalId(Long malId) {

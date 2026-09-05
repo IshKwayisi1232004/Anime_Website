@@ -16,8 +16,9 @@ public class JikanAnimeResult {
     private Integer popularity;
     private Integer members;
     private Integer favorites;
-    private String studios;
-    private String producers;
+
+    private List<JikanCompany> studios;
+    private List<JikanCompany> producers;
     
     private Double score;
     private String type;
@@ -132,11 +133,11 @@ public class JikanAnimeResult {
         return favorites;
     }
 
-    public String getStudios() {
+    public List<JikanCompany> getStudios() {
         return studios;
     }
 
-    public String getProducers() {
+    public List<JikanCompany> getProducers() {
         return producers;
     }
 
@@ -168,11 +169,11 @@ public class JikanAnimeResult {
         this.favorites = favorites;
     }
 
-    public void setStudios(String studios) {
+    public void setStudios(List<JikanCompany> studios) {
         this.studios = studios;
     }
 
-    public void setProducers(String producers) {
+    public void setProducers(List<JikanCompany> producers) {
         this.producers = producers;
     }
 
