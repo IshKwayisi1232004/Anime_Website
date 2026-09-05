@@ -2,6 +2,9 @@ package com.kwayisi.aniverse.anime;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name="anime")
 public class Anime {
@@ -16,6 +19,9 @@ public class Anime {
     @Column(nullable=false)
     private String title;
 
+    private String titleEnglish;
+    private String titleJapanese;
+
     @Column(columnDefinition = "TEXT")
     private String synopsis;
 
@@ -29,7 +35,22 @@ public class Anime {
 
     private Integer episodes;
 
+    private Integer rank;
+
+    private Integer popularity;
+
+    
+    private Integer members;
+
+    private Integer favorites;
+
+    private String studios;
+
+    private String producers;
+
     private String season;
+
+    private String source;
 
     private Integer year;
 
@@ -37,7 +58,7 @@ public class Anime {
 
     }
 
-    public Anime(String title, String synopsis, String imageUrl, String type, String status, Double score, Integer episodes, String season, Integer year) {
+    public Anime(String title, String synopsis, String imageUrl, String type, String status, Double score, Integer episodes, Integer rank, Integer popularity, Integer members, Integer favorites, String studios, String producers, String season, String source, Integer year) {
         this.title = title;
         this.synopsis = synopsis;
         this.imageUrl = imageUrl;
@@ -45,9 +66,24 @@ public class Anime {
         this.status = status;
         this.score = score;
         this.episodes = episodes;
+        this.rank = rank;
+        this.popularity = popularity;
+        this.members = members;
+        this.favorites = favorites;
+        this.studios = studios;
+        this.producers = producers;
         this.season = season;
+        this.source = source;
         this.year = year;
     }
+
+    @ManyToMany
+    @JoinTable(
+        name = "anime_genres",
+        joinColumns = @JoinColumn(name = "anime_id"),
+        inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private Set<Genre> genres = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -93,6 +129,42 @@ public class Anime {
         return year;
     }
 
+    public String getTitleEnglish() {
+        return titleEnglish;
+    }
+
+    public String getTitleJapanese() {
+        return titleJapanese;
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public Integer getPopularity() {
+        return popularity;
+    }
+
+    public Integer getMembers() {
+        return members;
+    }
+
+    public Integer getFavorites() {
+        return favorites;
+    }
+
+    public String getStudios() {
+        return studios;
+    }
+
+    public String getProducers() {
+        return producers;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -100,6 +172,14 @@ public class Anime {
     public void setTitle(String title) {
         this.title = title;
     } 
+
+    public void setTitleEnglish(String titleEnglish) {
+        this.titleEnglish = titleEnglish;
+    }
+
+    public void setTitleJapanese(String titleJapanese) {
+        this.titleJapanese = titleJapanese;
+    }
 
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
@@ -119,6 +199,34 @@ public class Anime {
     
     public void setScore(Double score) {
         this.score = score;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
+    }
+
+    public void setPopularity(Integer popularity) {
+        this.popularity = popularity;
+    }
+
+    public void setMembers(Integer members) {
+        this.members = members;
+    }
+
+    public void setFavorites(Integer favorites) {
+        this.favorites = favorites;
+    }
+
+    public void setStudios(String studios) {
+        this.studios = studios;
+    }
+
+    public void setProducers(String producers) {
+        this.producers = producers;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public void setSeason(String season) {
